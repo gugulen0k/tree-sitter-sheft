@@ -1,9 +1,9 @@
 {
-  "name": "tree-sitter-chalk",
+  "name": "tree-sitter-sheft",
   "version": "0.1.0",
-  "description": "Tree-sitter grammar for the Chalk language",
+  "description": "Tree-sitter grammar for the Sheft language",
   "main": "bindings/node",
-  "keywords": ["parser", "tree-sitter", "chalk"],
+  "keywords": ["parser", "tree-sitter", "sheft"],
   "dependencies": {
     "nan": "^2.18.0"
   },
@@ -16,10 +16,10 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.chalk",
+      "scope": "source.sheft",
       "file-types": ["ch"],
-      "highlights": "queries/chalk/highlights.scm",
-      "injections": "queries/chalk/injections.scm"
+      "highlights": "queries/sheft/highlights.scm",
+      "injections": "queries/sheft/injections.scm"
     }
   ]
 }

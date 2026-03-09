@@ -2,7 +2,7 @@
 // @ts-check
 
 module.exports = grammar({
-  name: 'chalk',
+  name: 'sheft',
 
   extras: $ => [
     /\s/,

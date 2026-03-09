@@ -1,15 +1,15 @@
 {
   "grammars": [
     {
-      "name": "chalk",
-      "scope": "source.chalk",
+      "name": "sheft",
+      "scope": "source.sheft",
       "file-types": ["ch"],
-      "highlights": "queries/chalk/highlights.scm",
-      "injections": "queries/chalk/injections.scm"
+      "highlights": "queries/sheft/highlights.scm",
+      "injections": "queries/sheft/injections.scm"
     }
   ],
   "metadata": {
     "version": "0.1.0",
-    "description": "Tree-sitter grammar for the Chalk language"
+    "description": "Tree-sitter grammar for the Sheft language"
   }
 }

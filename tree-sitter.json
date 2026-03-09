@@ -4,8 +4,8 @@
       "name": "chalk",
       "scope": "source.chalk",
       "file-types": ["ch"],
-      "highlights": "queries/highlights.scm",
-      "injections": "queries/injections.scm"
+      "highlights": "queries/chalk/highlights.scm",
+      "injections": "queries/chalk/injections.scm"
     }
   ],
   "metadata": {

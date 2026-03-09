@@ -1,0 +1,15 @@
+{
+  "grammars": [
+    {
+      "name": "chalk",
+      "scope": "source.chalk",
+      "file-types": ["ch"],
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "description": "Tree-sitter grammar for the Chalk language"
+  }
+}

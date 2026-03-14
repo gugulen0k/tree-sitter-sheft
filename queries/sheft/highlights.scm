@@ -146,6 +146,12 @@
   "." @punctuation.delimiter
   field: (identifier) @variable.member)
 
+; Lowercase object (e.g. `tokens` in `tokens.len()`) — highlight as @variable
+; Needed so identifiers inside f-string interpolations don't inherit @string color.
+(field_access
+  object: (identifier) @variable
+  (#lua-match? @variable "^[a-z_]"))
+
 ; Enum/error variant access: Type.Variant — capitalized object → @type
 ; Uses #lua-match? (nvim-treesitter Lua predicate). In the tree-sitter CLI,
 ; unknown predicates are treated as true so all field accesses match here,

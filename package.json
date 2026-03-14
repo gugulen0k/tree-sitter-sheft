@@ -17,7 +17,7 @@
   "tree-sitter": [
     {
       "scope": "source.sheft",
-      "file-types": ["ch"],
+      "file-types": ["sf"],
       "highlights": "queries/sheft/highlights.scm",
       "injections": "queries/sheft/injections.scm"
     }

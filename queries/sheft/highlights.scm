@@ -101,6 +101,19 @@
 (import_statement
   alias: (identifier) @module)
 
+"::" @punctuation.delimiter
+
+; ── Import items — import std::io::{ read_file!, Token } ──────────────────────
+
+(import_item name: (identifier) @function)
+(import_item suffix: "!" @function)
+(import_item suffix: "?" @function)
+
+; Type imports come last — override @function for capitalized names
+(import_item
+  name: (identifier) @type
+  (#lua-match? @type "^[A-Z]"))
+
 ; ── Match ─────────────────────────────────────────────────────────────────────
 
 (wildcard) @constant.builtin
@@ -204,9 +217,21 @@
 (func_definition name: (func_name "?" @function))
 
 ; Enum variant constructor in match pattern — e.g. Shape.Circle(r)
-; Must be LAST to override @function.method for call_expressions in pattern context.
+; Must come before the keyword fallback below.
 (match_pattern
   (expression
     (call_expression
       function: (field_access
         field: (func_name (identifier) @type)))))
+
+; ── Keyword fallback (MUST BE LAST — highest priority) ────────────────────────
+; During error recovery, tree-sitter may parse reserved keywords as (identifier)
+; nodes instead of anonymous keyword nodes. This rule overrides any prior capture
+; (e.g. @type, @variable) so keywords always render as @keyword.
+((identifier) @keyword
+  (#any-of? @keyword
+    "end" "func" "struct" "enum" "error"
+    "if" "else" "while" "for" "match"
+    "return" "raise" "try" "catch"
+    "import" "pub" "mut" "in" "with"
+    "and" "or" "not" "nil" "true" "false"))

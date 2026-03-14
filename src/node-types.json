@@ -849,6 +849,51 @@
     }
   },
   {
+    "type": "import_item",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "suffix": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "!",
+            "named": false
+          },
+          {
+            "type": "?",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "import_item_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "import_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "import_path",
     "named": true,
     "fields": {},
@@ -869,10 +914,20 @@
     "fields": {
       "alias": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "items": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "import_item_list",
             "named": true
           }
         ]
@@ -1672,6 +1727,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {

@@ -20,6 +20,7 @@ module.exports = grammar({
     [$.func_name],
     [$.map_type],
     [$.match_pattern, $.catch_expression],
+    [$.import_path],
   ],
 
   rules: {
@@ -45,17 +46,36 @@ module.exports = grammar({
 
     // ── Imports ─────────────────────────────────────────────────────────────
 
-    import_statement: $ => seq(
-      'import',
-      field('path', $.import_path),
-      'as',
-      field('alias', $.identifier),
+    import_statement: $ => choice(
+      seq(
+        'import',
+        field('path', $.import_path),
+        '::',
+        '{',
+        field('items', $.import_item_list),
+        '}',
+      ),
+      seq(
+        'import',
+        field('path', $.import_path),
+        optional(seq('as', field('alias', $.identifier))),
+      ),
     ),
 
     import_path: $ => seq(
       $.identifier,
-      repeat(seq('/', $.identifier)),
+      repeat(seq('::', $.identifier)),
     ),
+
+    import_item_list: $ => seq(
+      $.import_item,
+      repeat(seq(',', $.import_item)),
+    ),
+
+    import_item: $ => prec.right(1, seq(
+      field('name', $.identifier),
+      optional(field('suffix', choice('!', '?'))),
+    )),
 
     // ── Variable declarations ────────────────────────────────────────────────
 

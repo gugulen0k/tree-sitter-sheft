@@ -19,7 +19,9 @@
       "scope": "source.sheft",
       "file-types": ["sf"],
       "highlights": "queries/sheft/highlights.scm",
-      "injections": "queries/sheft/injections.scm"
+      "injections": "queries/sheft/injections.scm",
+      "locals": "queries/sheft/locals.scm",
+      "indents": "queries/sheft/indents.scm"
     }
   ]
 }
